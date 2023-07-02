@@ -2,21 +2,21 @@
 
 class Chambre{
     private  string $numChambre;
-    private string $nombreLit;
+    private int $nombreLit;
     private float $prix;
     private bool $wifi;
 
-    public function __construct(string $numChamb, string $nombre, float $prix, bool $wifi)
+    public function __construct(string $numChamb, string $nombreLit, float $prix, bool $wifi)
     {
         $this->numChambre = $numChamb;
-        $this->nombreLit = $nombre;
+        $this->nombreLit = $nombreLit;
         $this->prix = $prix;
         $this->wifi = $wifi;
     }
     
 
  // getter et setter de numChambre 
-    public function getNumChambre()
+    public function getNumChambre(): string
     {
         return $this->numChambre;
     }
@@ -28,7 +28,7 @@ class Chambre{
     }
 
 // getter et setter de nombreLit
-    public function getNombreLit()
+    public function getNombreLit() : int
     {
         return $this->nombreLit;
     }
@@ -40,7 +40,7 @@ class Chambre{
     }
 
 // getter et setter de prix
-    public function getPrix()
+    public function getPrix() : float
     {
         return $this->prix;
     }
@@ -52,7 +52,7 @@ class Chambre{
     }
 
 // getter et setter de wifi
-    public function getWifi()
+    public function getWifi() : bool
     {
         return $this->wifi;
     } 

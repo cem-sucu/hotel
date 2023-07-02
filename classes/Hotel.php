@@ -12,9 +12,9 @@ class Hotel{
         $this->totalChambre = $totalChambre;
     }
 
-    
+
 // getter et setter de nom
-    public function getNom()
+    public function getNom() : string
     {
         return $this->nom;
     }
@@ -26,7 +26,7 @@ class Hotel{
     }
 
 // getter et setter de totalChambre
-    public function getTotalChambre()
+    public function getTotalChambre() : int
     {
         return $this->totalChambre;
     }
@@ -37,7 +37,7 @@ class Hotel{
         return $this;
     }
 // getter et setter de adresse
-    public function getAdresse()
+    public function getAdresse() : string
     {
         return $this->adresse;
     } 
