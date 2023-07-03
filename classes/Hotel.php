@@ -24,6 +24,17 @@ class Hotel{
 
         return $this;
     }
+// getter et setter de adresse
+    public function getAdresse() : string
+    {
+        return $this->adresse;
+    } 
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
 
 // getter et setter de totalChambre
     public function getTotalChambre() : int
@@ -36,16 +47,12 @@ class Hotel{
 
         return $this;
     }
-// getter et setter de adresse
-    public function getAdresse() : string
-    {
-        return $this->adresse;
-    } 
-    public function setAdresse($adresse)
-    {
-        $this->adresse = $adresse;
 
-        return $this;
+
+    public function afficherInfos(){
+        echo "<h2>". $this->getNom() ."</h2>"
+        .$this->getAdresse() ."<br>"
+        ." Nombre de chambre : ".$this->getTotalChambre() ."<br>";
     }
 }
 

@@ -6,7 +6,7 @@ class Chambre{
     private float $prix;
     private bool $wifi;
 
-    public function __construct(string $numChamb, string $nombreLit, float $prix, bool $wifi)
+    public function __construct(string $numChamb, int $nombreLit, float $prix, bool $wifi)
     {
         $this->numChambre = $numChamb;
         $this->nombreLit = $nombreLit;

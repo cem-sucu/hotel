@@ -56,9 +56,9 @@ class Reservation {
     }
 
 // getter et setter dateReservation
-    public function getDateReservation(): DateTime
+    public function getDateReservation(): string
     {
-        return $this->dateReservation;
+        return $this->dateReservation->format("d-m-Y");
     }
     public function setDateReservation($dateReservation)
     {
