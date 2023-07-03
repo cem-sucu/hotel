@@ -3,51 +3,59 @@
 class Client{
     private string $nom;
     private string $prenom;
-    private DateTime $dateNaissance;
+    private string $dateNaissance;
+    private array $reservations;
 
-    public function __construct(string $nom, string $prenom, DateTime $dateNaissance)
+    public function __construct(string $nom, string $prenom, string $dateNaissance)
     {
         $this->nom = $nom;
         $this->prenom = $prenom;
-        $this-> dateNaissance = $dateNaissance;
-    }
-
-// getter et setter nom
-    public function getNom()
-    {
-        return $this->nom;
-    } 
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-// getter et setter dateNaissance
-    public function getDateNaissance()
-    {
-        return $this->dateNaissance;
-    }
-    public function setDateNaissance($dateNaissance)
-    {
         $this->dateNaissance = $dateNaissance;
-
-        return $this;
+        $this->reservations = [];
+    }
+    
+    public function ajouterReservation(Reservation $reservation) {
+        $this->reservations[] = $reservation;
     }
 
-// getter et setter prenom
-    public function getPrenom()
-    {
+    public function getReservations(): array {
+        return $this->reservations;
+    }
+
+    public function getNom(): string {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): void {
+        $this->nom = $nom;
+    }
+
+    public function getPrenom(): string {
         return $this->prenom;
     }
-    public function setPrenom($prenom)
-    {
-        $this->prenom = $prenom;
 
-        return $this;
+    public function setPrenom(string $prenom): void {
+        $this->prenom = $prenom;
+    }
+
+    public function getDateNaissance(): string {
+        return $this->dateNaissance;
+    }
+
+    public function setDateNaissance(string $dateNaissance): void {
+        $this->dateNaissance = $dateNaissance;
+    }
+
+    public function afficherReservations() {
+        foreach ($this->reservations as $reservation) {
+            echo  $this->getNom() . " " . $this->getPrenom() . " :\n";
+            echo "Chambre : " . $reservation->getChambre()->getNumChambre() . "\n\n";
+            echo "Date de début : " . $reservation->getDateDebut() . "\n";
+            echo "Date de fin : " . $reservation->getDateFin() . "\n<br>";
+        }
     }
 }
+
 
 
 ?>

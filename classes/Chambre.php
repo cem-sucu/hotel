@@ -1,71 +1,84 @@
-<?php 
-
+<?php
 class Chambre{
-    private  string $numChambre;
+    private string $numChambre;
     private int $nombreLit;
     private float $prix;
     private bool $wifi;
-
-    public function __construct(string $numChamb, int $nombreLit, float $prix, bool $wifi)
+    private Hotel $hotel;
+    private array $reservations;
+ 
+    public function __construct(string $numChamb, int $nombreLit, float $prix, bool $wifi, Hotel $hotel)
     {
         $this->numChambre = $numChamb;
         $this->nombreLit = $nombreLit;
         $this->prix = $prix;
         $this->wifi = $wifi;
+        $this->hotel = $hotel;
+        $this->reservations = [];
     }
     
+    public function addReservation(Reservation $reservation) {
+        $this->reservations[] = $reservation;
+    }
 
- // getter et setter de numChambre 
-    public function getNumChambre(): string
-    {
+    public function getReservations(): array {
+        return $this->reservations;
+    }
+
+    public function getNumChambre(): string {
         return $this->numChambre;
     }
-    public function setNumChambre($numChambre)
-    {
-        $this->numChambre = $numChambre;
 
-        return $this;
+    public function setNumChambre(string $numChambre): void {
+        $this->numChambre = $numChambre;
     }
 
-// getter et setter de nombreLit
-    public function getNombreLit() : int
-    {
+    public function getNombreLit(): int {
         return $this->nombreLit;
     }
-    public function setNombreLit($nombreLit)
-    {
-        $this->nombreLit = $nombreLit;
 
-        return $this;
+    public function setNombreLit(int $nombreLit): void {
+        $this->nombreLit = $nombreLit;
     }
 
-// getter et setter de prix
-    public function getPrix() : float
-    {
+    public function getPrix(): float {
         return $this->prix;
     }
-    public function setPrix($prix)
-    {
-        $this->prix = $prix;
 
-        return $this;
+    public function setPrix(float $prix): void {
+        $this->prix = $prix;
     }
 
-// getter et setter de wifi
-    public function getWifi() : bool
-    {
+    public function getWifi(): bool {
         return $this->wifi;
-    } 
-    public function setWifi($wifi)
-    {
-        $this->wifi = $wifi;
+    }
 
-        return $this;
+    public function setWifi(bool $wifi): void {
+        $this->wifi = $wifi;
+    }
+
+    public function getHotel(): Hotel {
+        return $this->hotel;
+    }
+
+    public function setHotel(Hotel $hotel): void {
+        $this->hotel = $hotel;
+    }
+
+    public function estOccupee() : bool {
+        foreach ($this->reservations as $reservation) {
+            $dateDebut = $reservation->getDateDebut();
+            $dateFin = $reservation->getDateFin();
+            $aujourdhui = date("Y-m-d");
+
+            if ($aujourdhui >= $dateDebut && $aujourdhui <= $dateFin) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
-
-
-
 
 
 ?>
