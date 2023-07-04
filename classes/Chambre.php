@@ -51,12 +51,8 @@ class Chambre{
         $this->prix = $prix;
     }
 
-    public function hasWifi(): bool { // lorsque on utilise un bboolean la conventiion veut qu'on ecrive hasWifi() au lieu de setWifi()
-        if($this->wifi === true){
-            return "OUI";
-        }else{
-            return "NON";
-        }
+    public function hasWifi(): string {  // lorsque on utilise un bboolean la conventiion veut qu'on ecrive hasWifi() au lieu de setWifi()
+        return $this->wifi ? "OUI" : "NON";// ca correspond a faire si wifi ALORS oui SINON non
     }
 
     public function setWifi(bool $wifi): void {

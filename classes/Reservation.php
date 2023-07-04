@@ -5,6 +5,7 @@ class Reservation{
     private string $dateFin;
     private Chambre $chambre;
     private Client $client;
+    private Hotel $hotel;
 
     public function __construct(string $dateDebut, string $dateFin, Chambre $chambre, Client $client)
     {
@@ -44,6 +45,22 @@ class Reservation{
 
     public function setClient(Client $client): void {
         $this->client = $client;
+    }
+
+    public function getHotel(): Hotel
+    {
+        return $this->hotel;
+    }
+    public function setHotel(Hotel $hotel) : Reservation
+    {
+        $this->hotel = $hotel;
+
+        return $this;
+    }
+
+    public function clientReservations(){
+        return 
+        $this->client->getPrenom()." ".$this->client->getNom()." - Chambre ".$this->chambre->getNumChambre()." - du ".$this->getDateDebut()." au ".$this->getDateFin();
     }
 }
 

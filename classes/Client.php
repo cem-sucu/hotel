@@ -14,7 +14,7 @@ class Client{
         $this->reservations = [];
     }
     
-    public function ajouterReservation(Reservation $reservation) {
+    public function ajouterReservation(Reservation $reservation): void {
         $this->reservations[] = $reservation;
     }
 

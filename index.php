@@ -11,10 +11,10 @@ $chambre1 = new Chambre("1",$hotelStrasbourg, 2, 120.0, false, true,);
 $chambre2 = new Chambre("2",$hotelStrasbourg, 2, 120.0, false, true);
 $chambre3 = new Chambre("3",$hotelStrasbourg, 2, 120.0, false, false);
 
-$chambre16 = new Chambre("16",$hotelStrasbourg, 2, 300.0, false, true);
-$chambre17 = new Chambre("17",$hotelStrasbourg, 2, 300.0, false, false);
-$chambre18 = new Chambre("18",$hotelStrasbourg, 2, 30.0, false, true);
-$chambre19 = new Chambre("19",$hotelStrasbourg, 2, 300.0, false, false);
+$chambre16 = new Chambre("16",$hotelStrasbourg, 2, 300.0, true, true);
+$chambre17 = new Chambre("17",$hotelStrasbourg, 2, 300.0, true, false);
+$chambre18 = new Chambre("18",$hotelStrasbourg, 2, 30.0, true, true);
+$chambre19 = new Chambre("19",$hotelStrasbourg, 2, 300.0, true, false);
 
 
 
@@ -48,12 +48,14 @@ $client1->ajouterReservation($reservation1);
 $client2->ajouterReservation($reservation2);
 $client2->ajouterReservation($reservation3);
 
-$hotelStrasbourg->afficherReservations();
+$hotelStrasbourg->ajouterReservation($reservation1);
+$hotelStrasbourg->ajouterReservation($reservation2);
+$hotelStrasbourg->ajouterReservation($reservation3);
 
+$hotelStrasbourg->afficherReservations();
 $hotelParis->afficherReservations();
 
-$client1->afficherReservations();
-$client2->afficherReservations();
+
 
 $hotelStrasbourg->afficherStatutsChambres();
 ?>

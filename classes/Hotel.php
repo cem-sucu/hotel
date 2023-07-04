@@ -56,7 +56,7 @@ class Hotel{
         return $this->reservations;
     }
 
-    public function chambreDispo(): int
+    public function chambreDisponible(): int
     {
         return count($this->chambres) - count($this->reservations);
     }
@@ -71,26 +71,26 @@ class Hotel{
         return "
         Nombre de chambres : " . count($this->chambres) . "<br>
         Nombre de chambres réservées : " . count($this->reservations) . "<br>
-        Nombre de chambres disponibles : " . $this->chambreDispo() . "<br> 
+        Nombre de chambres disponibles : " . $this->chambreDisponible() . "<br> 
         <br>";
     }
 
 
 
-// afficher les reservation
-    public function afficherReservations()
-    {
-        if (count($this->reservations) >= 1) {
-            echo "<strong>Réservations de l'hotel : " . $this->nom . "</strong><br>";
-            foreach ($this->reservations as $reservation) {
-                echo $reservation->syntheseReservations() . "<br><br>";
-            }
+    // afficher les reservation
+    public function afficherReservations() {
+        echo "<h3>Réservations de l'hôtel : " . $this->nom . "</h3><br>";
+        $reservationsHotel = array_filter($this->reservations, function ($reservation) {
+            return $reservation->getChambre()->getHotel() === $this;
+        });
+        if (count($reservationsHotel) === 0) {
+            echo "Aucune réservation !!" . "<br><br>";
         } else {
-            echo "<strong>Réservations de l'hôtel : " . $this->nom . "</strong>";
-            echo "<br> Aucune réservation !!<br><br>";
+            foreach ($reservationsHotel as $reservation) {
+                echo $reservation->clientReservations() . "<br>";
+            }
         }
     }
-
     // Afficher statuts des chambres
     public function afficherStatutsChambres()
     {
@@ -105,7 +105,7 @@ class Hotel{
         return "<h3>".$this->nom . "</h3>" . $this->address . "<br>
         Nombre de chambres : " . count($this->chambres) . "<br>
         Nombre de réservations : " . count($this->reservations) . "<br>
-        Nombre de chambres disponibles : " . $this->chambreDispo() . "<br>
+        Nombre de chambres disponibles : " . $this->chambreDisponible() . "<br>
         <br>";
     }
 
