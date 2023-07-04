@@ -4,21 +4,30 @@ spl_autoload_register(function ($class_name) {
     require 'classes/' . $class_name . '.php';
 });
 
-$hotelStrasbourg = new Hotel("Hilton **** Strasbourg");
-$hotelParis = new Hotel("Regent **** Paris");
+$hotelStrasbourg = new Hotel("Hilton **** Strasbourg", "10 rue de la Gare 67000 Strasbourg");
+$hotelParis = new Hotel("Regent **** Paris", "25 rue de la Gare 31000 Paris");
 
-$chambre1 = new Chambre("17", 2, 120.0, false, $hotelStrasbourg);
-$chambre2 = new Chambre("3", 2, 120.0, false, $hotelStrasbourg);
-$chambre3 = new Chambre("4", 2, 120.0, false, $hotelStrasbourg);
+$chambre1 = new Chambre("1",$hotelStrasbourg, 2, 120.0, false, true,);
+$chambre2 = new Chambre("2",$hotelStrasbourg, 2, 120.0, false, true);
+$chambre3 = new Chambre("3",$hotelStrasbourg, 2, 120.0, false, false);
+
+$chambre16 = new Chambre("16",$hotelStrasbourg, 2, 300.0, false, true);
+$chambre17 = new Chambre("17",$hotelStrasbourg, 2, 300.0, false, false);
+$chambre18 = new Chambre("18",$hotelStrasbourg, 2, 30.0, false, true);
+$chambre19 = new Chambre("19",$hotelStrasbourg, 2, 300.0, false, false);
 
 $hotelStrasbourg->afficherInfos();
 
 $hotelStrasbourg->ajouterChambre($chambre1);
 $hotelStrasbourg->ajouterChambre($chambre2);
 $hotelStrasbourg->ajouterChambre($chambre3);
+$hotelStrasbourg->ajouterChambre($chambre16);
+$hotelStrasbourg->ajouterChambre($chambre17);
+$hotelStrasbourg->ajouterChambre($chambre18);
+$hotelStrasbourg->ajouterChambre($chambre19);
 
-$client1 = new Client("Virgile", "GIBELLO", "1990-01-01");
-$client2 = new Client("Micka", "MURMANN", "1995-05-10");
+$client1 = new Client("Virgile", "GIBBELLO", "1990-01-01");
+$client2 = new Client("Mickael", "MURNANN", "1995-05-10");
 
 $reservation1 = new Reservation("01-01-2021", "2021-01-01",$chambre1, $client1);
 $reservation1->setClient($client1);

@@ -1,23 +1,25 @@
 <?php
 class Chambre{
     private string $numChambre;
-    private int $nombreLit;
-    private float $prix;
-    private bool $wifi;
     private Hotel $hotel;
+    private float $prix;
+    private int $nombreLit;
+    private bool $wifi;
+    private bool $etat;
     private array $reservations;
  
-    public function __construct(string $numChamb, int $nombreLit, float $prix, bool $wifi, Hotel $hotel)
+    public function __construct(string $numChamb,Hotel $hotel,int $nombreLit ,float $prix , bool $wifi, bool $etat)
     {
         $this->numChambre = $numChamb;
+        $this->hotel = $hotel;
         $this->nombreLit = $nombreLit;
         $this->prix = $prix;
         $this->wifi = $wifi;
-        $this->hotel = $hotel;
+        $this->etat = $etat;
         $this->reservations = [];
     }
     
-    public function addReservation(Reservation $reservation) {
+    public function addReservation(Reservation $reservation) :void {
         $this->reservations[] = $reservation;
     }
 
@@ -49,8 +51,12 @@ class Chambre{
         $this->prix = $prix;
     }
 
-    public function getWifi(): bool {
-        return $this->wifi;
+    public function hasWifi(): bool { // lorsque on utilise un bboolean la conventiion veut qu'on ecrive hasWifi() au lieu de setWifi()
+        if($this->wifi === true){
+            return "OUI";
+        }else{
+            return "NON";
+        }
     }
 
     public function setWifi(bool $wifi): void {
@@ -65,18 +71,24 @@ class Chambre{
         $this->hotel = $hotel;
     }
 
-    public function estOccupee() : bool {
-        foreach ($this->reservations as $reservation) {
-            $dateDebut = $reservation->getDateDebut();
-            $dateFin = $reservation->getDateFin();
-            $aujourdhui = date("Y-m-d");
+    
+// getter et setter etat pour la disponibilité/reservé chambre
+    public function getEtat()
+    {
+        return $this->etat;
+    }
 
-            if ($aujourdhui >= $dateDebut && $aujourdhui <= $dateFin) {
-                return true;
-            }
-        }
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
 
-        return false;
+        return $this;
+    }
+
+// methode toSyring()
+    public function __toString()
+    {
+        echo "";
     }
 }
 
