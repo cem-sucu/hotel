@@ -8,7 +8,7 @@ class Chambre{
     private bool $etat;
     private array $reservations;
  
-    public function __construct(string $numChamb,Hotel $hotel,int $nombreLit ,float $prix , bool $wifi, bool $etat)
+    public function __construct(string $numChamb, Hotel $hotel, int $nombreLit, float $prix, bool $wifi, bool $etat)
     {
         $this->numChambre = $numChamb;
         $this->hotel = $hotel;
@@ -73,16 +73,18 @@ class Chambre{
 
     
 // getter et setter etat pour la disponibilité/reservé chambre
-    public function getEtat()
+    public function hasEtat() : string
     {
-        return $this->etat;
+        if($this->etat===true ){
+            return "Dsiponible";
+           } else{
+              return "Réservé";
+           };
     }
 
-    public function setEtat($etat)
+    public function setEtat(Chambre $etat) : void
     {
-        $this->etat = $etat;
-
-        return $this;
+       $this->etat = $etat;
     }
 
 // methode toSyring()

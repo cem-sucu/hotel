@@ -61,6 +61,11 @@ class Hotel{
         return count($this->chambres) - count($this->reservations);
     }
 
+     // Afficher le nom
+    public function afficherNom() : string 
+    {
+        return "$this->nom";
+    }
     public function afficherHotel(): string
     {
         return "
@@ -72,27 +77,37 @@ class Hotel{
 
 
 
-
-    public function afficherReservations() {
-        foreach ($this->reservations as $reservation) {
-            echo "Réservation pour le client " . $reservation->getClient()->getNom() . " " . $reservation->getClient()->getPrenom() . " :\n";
-            echo "Date de début : " . $reservation->getDateDebut() . "";
-            echo "Date de fin : " . $reservation->getDateFin() . "";
-            echo "Chambre : " . $reservation->getChambre()->getNumChambre() . "";
+// afficher les reservation
+    public function afficherReservations()
+    {
+        if (count($this->reservations) >= 1) {
+            echo "<strong>Réservations de l'hotel : " . $this->nom . "</strong><br>";
+            foreach ($this->reservations as $reservation) {
+                echo $reservation->syntheseReservations() . "<br><br>";
+            }
+        } else {
+            echo "<strong>Réservations de l'hôtel : " . $this->nom . "</strong>";
+            echo "<br> Aucune réservation !!<br><br>";
         }
     }
 
-    public function afficherStatutChambres() : void {
+    // Afficher statuts des chambres
+    public function afficherStatutsChambres()
+    {
+        echo "Statuts des chambres de <strong>".$this->nom."</strong><br>";
         foreach ($this->chambres as $chambre) {
-            $statut = ($chambre->estOccupee()) ? "Réservé" : "Disponible";
-            echo "Chambre " . $chambre->getNumChambre() . " : " . $statut . "<br>";
+            echo "Chambre ".$chambre->getNumChambre()." ".$chambre->getPrix()." € ".$chambre->hasWifi()." ".$chambre->hasEtat()."<br>";
         }
     }
 
-    public function afficherInfos(){
-        echo "<h3>".$this->getNom() ."</h3>";
+    public function __toString(): string
+    {
+        return "<h3>".$this->nom . "</h3>" . $this->address . "<br>
+        Nombre de chambres : " . count($this->chambres) . "<br>
+        Nombre de réservations : " . count($this->reservations) . "<br>
+        Nombre de chambres disponibles : " . $this->chambreDispo() . "<br>
+        <br>";
     }
-
 
 
 }

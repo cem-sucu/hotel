@@ -16,7 +16,9 @@ $chambre17 = new Chambre("17",$hotelStrasbourg, 2, 300.0, false, false);
 $chambre18 = new Chambre("18",$hotelStrasbourg, 2, 30.0, false, true);
 $chambre19 = new Chambre("19",$hotelStrasbourg, 2, 300.0, false, false);
 
-$hotelStrasbourg->afficherInfos();
+
+
+echo $hotelStrasbourg;
 
 $hotelStrasbourg->ajouterChambre($chambre1);
 $hotelStrasbourg->ajouterChambre($chambre2);
@@ -53,5 +55,5 @@ $hotelParis->afficherReservations();
 $client1->afficherReservations();
 $client2->afficherReservations();
 
-$hotelStrasbourg->afficherStatutChambres();
+$hotelStrasbourg->afficherStatutsChambres();
 ?>
