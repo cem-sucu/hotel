@@ -47,12 +47,18 @@ class Client{
     }
 
     public function afficherReservations() {
+        echo "<h3> Réservation de ".$this->getNom() ." " .$this->getPrenom()."</h3>" ;
         foreach ($this->reservations as $reservation) {
             echo  $this->getNom() . " " . $this->getPrenom() . " :\n";
-            echo "Chambre : " . $reservation->getChambre()->getNumChambre() . "\n\n";
+            echo "Chambre : " . $reservation->getChambre()->getNumChambre() ."\n\n";
             echo "Date de début : " . $reservation->getDateDebut() . "\n";
             echo "Date de fin : " . $reservation->getDateFin() . "\n<br>";
         }
+    }
+
+    public function __toString()
+    {
+        return "";
     }
 }
 

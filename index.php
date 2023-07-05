@@ -60,19 +60,16 @@ $reservation3 = new Reservation("2021-04-01", "2021-04-01", $chambre3, $client2)
 $client1->ajouterReservation($reservation1);
 $client2->ajouterReservation($reservation2);
 $client2->ajouterReservation($reservation3);
-
-
-echo $hotelStrasbourg->afficherHotel();
-$hotelStrasbourg->afficherReservations();
-
-
-
 $hotelStrasbourg->ajouterReservation($reservation1);
 $hotelStrasbourg->ajouterReservation($reservation2);
 $hotelStrasbourg->ajouterReservation($reservation3);
 
+echo $hotelStrasbourg->afficherHotel();
 $hotelStrasbourg->afficherReservations();
+echo $hotelStrasbourg;
+$hotelParis->afficherReservations();
 
+$client2->afficherReservations();
 
 
 $hotelStrasbourg->afficherStatutsChambres();
