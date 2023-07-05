@@ -63,7 +63,7 @@ class Chambre{
         return $this->hotel;
     }
 
-    public function setHotel(Hotel $hotel): void {
+    public function setHotel(bool $hotel): void {
         $this->hotel = $hotel;
     }
 

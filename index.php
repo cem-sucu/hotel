@@ -34,8 +34,6 @@ $chambre19 = new Chambre("19",$hotelStrasbourg, 2, 300.0, true, false);
 
 
 
-echo $hotelStrasbourg;
-
 $hotelStrasbourg->ajouterChambre($chambre1);
 $hotelStrasbourg->ajouterChambre($chambre2);
 $hotelStrasbourg->ajouterChambre($chambre3);
@@ -58,19 +56,22 @@ $reservation2->setChambre($chambre2);
 $reservation3 = new Reservation("2021-04-01", "2021-04-01", $chambre3, $client2);
 
 
+
 $client1->ajouterReservation($reservation1);
 $client2->ajouterReservation($reservation2);
 $client2->ajouterReservation($reservation3);
 
-// $client1->afficherReservations();
-// $client2->afficherReservations();
+
+echo $hotelStrasbourg->afficherHotel();
+$hotelStrasbourg->afficherReservations();
+
+
 
 $hotelStrasbourg->ajouterReservation($reservation1);
 $hotelStrasbourg->ajouterReservation($reservation2);
 $hotelStrasbourg->ajouterReservation($reservation3);
 
 $hotelStrasbourg->afficherReservations();
-$hotelParis->afficherReservations();
 
 
 

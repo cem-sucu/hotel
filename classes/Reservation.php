@@ -13,6 +13,8 @@ class Reservation{
         $this->dateFin = $dateFin;
         $this->chambre = $chambre;
         $this->client = $client;
+        $this->hotel = $chambre->getHotel();
+
     }
 
     public function getDateDebut(): string {
