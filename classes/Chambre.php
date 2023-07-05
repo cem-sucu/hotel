@@ -72,9 +72,9 @@ class Chambre{
     public function hasEtat() : string
     {
         if($this->etat===true ){
-            return "Dsiponible";
+            return "<span class='etatFormeDispo'>Disponible</span>";
            } else{
-              return "Réservé";
+              return  "<span class='etatFormeReserve'>Réservé</span>";
            };
     }
 

@@ -37,17 +37,25 @@ class Hotel{
 
         return $this;
     }
-    // methode ajouter chambre
+// methode ajouter chambre
     public function ajouterChambre(Chambre $chambre) {
-        $this->chambres[] = $chambre;
+        if($chambre instanceof Chambre){
+            $this->chambres[] = $chambre;
+        }
     }
 
+//getter et setter 
     public function getChambres(): array {
         return $this->chambres;
     }
+    public function setChambres() : int {
+        $this->chambres = [];
+        for($i=1; $i<=30; $i++ ){
+            $this->chambres[] = new Chambre($i);
+        }
+    }
 
    
-
     public function ajouterReservation(Reservation $reservation) {
         $this->reservations[] = $reservation;
     }
@@ -61,7 +69,7 @@ class Hotel{
         return count($this->chambres) - count($this->reservations);
     }
 
-     // Afficher le nom
+// Afficher le nom
     public function afficherNom() : string 
     {
         return "$this->nom";
@@ -77,7 +85,7 @@ class Hotel{
 
 
 
-    // afficher les reservation
+// afficher les reservation
     public function afficherReservations() {
         echo "<h3>Réservations de l'hôtel : " . $this->nom . "</h3><br>";
         $reservationsHotel = array_filter($this->reservations, function ($reservation) {
@@ -91,13 +99,25 @@ class Hotel{
             }
         }
     }
-    // Afficher statuts des chambres
-    public function afficherStatutsChambres()
-    {
-        echo "Statuts des chambres de <strong>".$this->nom."</strong><br>";
+
+
+    // Afficher statuts des chambres  Fonction similaire a retravailler
+    // public function afficherStatutsChambres()
+    // {
+    //     echo "Statuts des chambres de <strong>".$this->nom."</strong><br>";
+    //     foreach ($this->chambres as $chambre) {
+    //         echo 
+    //         "<table><tr><td>Chambre ".$chambre->getNumChambre()."</td><td>".$chambre->getPrix()." €</td><td> ".$chambre->hasWifi()."</td><td> ".$chambre->hasEtat()."</td></tr></table><br>";
+    //     }
+    // }
+
+    public function afficherStatutsChambres(){
+        echo "Statuts des chambres de <strong>".$this->nom."</strong><br><br>";
+        echo "<table class='tableStatus'><thead><tr><th>Chambre</th><th>Prix</th><th>Wifi</th><th>État</th></tr></thead>";
         foreach ($this->chambres as $chambre) {
-            echo "Chambre ".$chambre->getNumChambre()." ".$chambre->getPrix()." € ".$chambre->hasWifi()." ".$chambre->hasEtat()."<br>";
+            echo "<tbody><tr><td>".$chambre->getNumChambre()." </td><td>".$chambre->getPrix()." €</td><td>".$chambre->hasWifi()."</td><td>".$chambre->hasEtat()."</td></tr></tbody>";
         }
+        echo "</table>";
     }
 
     public function __toString(): string

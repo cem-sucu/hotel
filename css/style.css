@@ -1,0 +1,24 @@
+.tableStatus{
+    border: black 1px solid;
+    text-align: center;
+    width: 70%;
+    background-color: rgb(249, 245, 245);
+
+}
+
+.etatFormeDispo{
+    background-color: rgb(1, 207, 1);
+    border-radius: 5px;
+    display: inline-block;
+    padding: 2px;
+    margin: 2px;
+
+}
+.etatFormeReserve{
+    background-color: rgb(240, 71, 68);
+    border-radius: 5px;
+    display: inline-block;
+    padding: 2px;
+    margin: 2px;
+
+}
